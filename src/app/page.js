@@ -41,6 +41,7 @@ export default function Home() {
     const getWeatherData = async (lat, lon) => {
       try {
         const response = await getCurrentWeather(location.lat, location.lon, unitType);
+
         setWeatherData(response)
       } catch(error) {
         // TODO: handle error
