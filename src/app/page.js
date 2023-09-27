@@ -1,6 +1,9 @@
 'use client'
+import Image from 'next/image';
 import { useState, useEffect } from 'react';
 import { getCurrentWeather } from './services/axios';
+import WeatherCard from './components/WeatherCard/WeatherCard';
+import Background from './assets/background.png';
 
 const options = {
   enableHighAccuracy: true,
@@ -13,7 +16,7 @@ export default function Home() {
     lat: 0,
     lon: 0,
   });
-  const [unitType, setUnitType] = useState('metric');''
+  const [unitType, setUnitType] = useState('metric'); ''
   const [weatherData, setWeatherData] = useState(null);
 
   useEffect(() => {
@@ -42,8 +45,8 @@ export default function Home() {
       try {
         const response = await getCurrentWeather(location.lat, location.lon, unitType);
 
-        setWeatherData(response)
-      } catch(error) {
+        setWeatherData(response);
+      } catch (error) {
         // TODO: handle error
       }
     };
@@ -52,8 +55,20 @@ export default function Home() {
   }, [location, unitType]);
 
   return (
-    <main className="flex bg-purple-300 h-screen">
-      weather-app
+    <main className="relative flex justify-center items-center bg-indigo-700 h-screen z-30">
+      <Image
+        src={Background}
+        alt="background"
+        quality="100"
+        layout="fill"
+        objectFit="cover"
+        className="z-10"
+      />
+      {weatherData?.current?.weather[0].main && (
+        <WeatherCard
+          weatherData={weatherData?.current}
+        />
+      )}
     </main>
   );
 };
