@@ -1,6 +1,6 @@
 import Image from 'next/image';
 import styles from './WeatherCard.module.scss';
-import { convertDate } from '@/app/helpers/convertDate';
+import { convertDate } from '../../helpers/convertDate';
 
 const WeatherCard = ({ weatherData, unitType }) => {
   const iconUrl = `${process.env.imageUrl}${weatherData.weather[0].icon}.png`;
