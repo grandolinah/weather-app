@@ -1,4 +1,5 @@
 import { Roboto } from 'next/font/google';
+import { UserConfigProvider } from './context/userConfig';
 import Background from './components/Background';
 import './globals.scss';
 
@@ -17,7 +18,9 @@ export default function RootLayout({ children }) {
     <html lang="en">
       <body className={roboto.className}>
         <Background />
-        {children}
+        <UserConfigProvider>
+          {children}
+        </UserConfigProvider>
       </body>
     </html>
   );

@@ -2,9 +2,11 @@
 import { useState, useEffect } from 'react';
 import { getCurrentWeather } from './services/axios';
 import WeatherCard from './components/WeatherCard/WeatherCard';
+import UnitTypeSelect from './components/UnitTypeSelect';
 import { formatTemperature } from './helpers/formatTemperature';
 import { normalizeData } from './helpers/normalizeData';
 import styles from './page.module.scss';
+import { useUserConfigContext } from './context/userConfig';
 
 const OPTIONS = {
   enableHighAccuracy: true,
@@ -17,7 +19,7 @@ export default function Home() {
     lat: 0,
     lon: 0,
   });
-  const unit = 'metric'; // TODO:
+  const { state: { unit } } = useUserConfigContext();
   const [weatherData, setWeatherData] = useState(null);
   const [foreCastData, setForeCastData] = useState([]);
 
@@ -74,6 +76,9 @@ export default function Home() {
 
   return (
     <main className={styles.main}>
+      <div className={styles['main__unit-wrapper']}>
+        <UnitTypeSelect />
+      </div>
       <div className={styles.main__wrapper}>
         {weatherData && (
           <WeatherCard
@@ -84,8 +89,8 @@ export default function Home() {
             temp={formatTemperature(weatherData.temp)}
             description={weatherData.description}
             alerts={weatherData.alerts}
-            minTemp={weatherData.minTemp}
-            maxTemp={weatherData.maxTemp}
+            minTemp={formatTemperature(weatherData.minTemp)}
+            maxTemp={formatTemperature(weatherData.maxTemp)}
           />
         )}
         <ul className={styles['main__list-wrapper']}>
