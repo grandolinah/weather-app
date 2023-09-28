@@ -5,6 +5,10 @@
     @apply flex flex-col items-center p-4;
   }
 
+  &__unit-wrapper {
+    @apply flex justify-end w-full p-8;
+  }
+
   &__list-wrapper {
     @apply z-30 flex flex-col lg:flex-row m-4;
   }

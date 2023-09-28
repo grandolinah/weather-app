@@ -1,5 +1,6 @@
 import Image from 'next/image';
 import PropTypes from 'prop-types';
+import classNames from 'classnames';
 import styles from './WeatherCard.module.scss';
 import { convertDate } from '../../helpers/convertDate';
 
@@ -17,9 +18,10 @@ const WeatherCard = ({
   const iconUrl = `${process.env.imageUrl}${icon}.png`;
   const unit = unitType === 'metric' ? '°C' : ''; // TODO: handle unit types
   const currentDate = convertDate(date);
+  const weatherCardClass = classNames(styles['weather-card'],{ [styles['weather-card--active']]: !isToday });
 
   return (
-    <div className={styles['weather-card']}>
+    <div className={weatherCardClass}>
       <div className={styles['weather-card__date-wrapper']}>
       {isToday && <p className={styles['weather-card__date-title']}>Today</p>}
       <p className={styles['weather-card__date']}>{currentDate}</p>
