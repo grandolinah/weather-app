@@ -1,7 +1,15 @@
 .main {
-  @apply relative bg-indigo-700 h-full z-30;
+  @apply relative h-full z-30;
 
   &__wrapper {
     @apply flex flex-col items-center p-4;
+  }
+
+  &__list-wrapper {
+    @apply z-30 flex flex-col lg:flex-row m-4;
+  }
+
+  &__list-item {
+    @apply m-2;
   }
 }

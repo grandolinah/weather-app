@@ -1,16 +1,15 @@
 'use client'
-import Image from 'next/image';
 import { useState, useEffect } from 'react';
 import { getCurrentWeather } from './services/axios';
 import WeatherCard from './components/WeatherCard/WeatherCard';
 import { formatTemperature } from './helpers/formatTemperature';
-import Background from './assets/background.png';
+
 import { useUserConfigContext } from './context/userConfig';
 import styles from './page.module.scss';
 import { convertDate } from './helpers/convertDate';
 import { normalizeData } from './helpers/normalizeData';
 
-const options = {
+const OPTIONS = {
   enableHighAccuracy: true,
   timeout: 5000,
   maximumAge: 0,
@@ -40,7 +39,7 @@ export default function Home() {
     }
 
     if (navigator.geolocation) {
-      navigator.geolocation.getCurrentPosition(onSuccessGetLocation, onErrorGetLocation, options);
+      navigator.geolocation.getCurrentPosition(onSuccessGetLocation, onErrorGetLocation, OPTIONS);
     }
   }, []);
 
@@ -92,14 +91,14 @@ export default function Home() {
             maxTemp={weatherData.maxTemp}
           />
         )}
-        <ul className="z-30 flex flex-col md:flex-row m-4">
+        <ul className={styles['main__list-wrapper']}>
           {foreCastData.map((item, index) => {
             const onClickHandler = () => {
               // TODO: redirect
             };
 
             return (
-              <li key={index} className="m-2">
+              <li key={index} className={styles['main__list-item']}>
                 <WeatherCard
                   icon={item.icon}
                   unitType={unit}
@@ -116,15 +115,6 @@ export default function Home() {
           })}
         </ul>
       </div>
-      <div className="fixed top-0 left-0 z-0 h-screen w-screen">
-        <Image
-          className="z-0"
-          src={Background}
-          alt="background"
-          quality="100"
-          fill
-        />
-      </div>
     </main>
   );
-}
+};
