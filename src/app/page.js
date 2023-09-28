@@ -3,11 +3,8 @@ import { useState, useEffect } from 'react';
 import { getCurrentWeather } from './services/axios';
 import WeatherCard from './components/WeatherCard/WeatherCard';
 import { formatTemperature } from './helpers/formatTemperature';
-
-import { useUserConfigContext } from './context/userConfig';
-import styles from './page.module.scss';
-import { convertDate } from './helpers/convertDate';
 import { normalizeData } from './helpers/normalizeData';
+import styles from './page.module.scss';
 
 const OPTIONS = {
   enableHighAccuracy: true,
@@ -117,4 +114,4 @@ export default function Home() {
       </div>
     </main>
   );
-};
+}
