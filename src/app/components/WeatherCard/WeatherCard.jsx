@@ -8,7 +8,7 @@ const WeatherCard = ({
   icon,
   unitType,
   date,
-  temp,
+  temp = null,
   minTemp,
   maxTemp,
   description,
@@ -54,7 +54,9 @@ WeatherCard.propTypes = {
   icon: PropTypes.string.isRequired,
   unitType: PropTypes.string.isRequired,
   date: PropTypes.number.isRequired,
-  temp: PropTypes.string.isRequired,
+  temp: PropTypes.string,
+  minTemp: PropTypes.string.isRequired,
+  maxTemp: PropTypes.string.isRequired,
   description: PropTypes.string.isRequired,
   alerts: PropTypes.arrayOf(PropTypes.object) // TODO: check type
 };
