@@ -1,0 +1,7 @@
+.main {
+  @apply relative bg-indigo-700 h-full z-30;
+
+  &__wrapper {
+    @apply flex flex-col items-center p-4;
+  }
+}

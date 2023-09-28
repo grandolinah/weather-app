@@ -1,12 +1,12 @@
 .weather-card {
-  @apply flex flex-col justify-between items-center w-56 h-72 p-8 bg-slate-400 bg-opacity-40 rounded-xl shadow-card text-slate-200 z-30;
+  @apply flex flex-col justify-between items-center w-56 h-72 p-4 bg-slate-400 bg-opacity-40 rounded-xl shadow-card text-slate-200 z-30;
 
   &__date-wrapper {
     @apply flex flex-col items-center justify-center;
   }
 
   &__date-title {
-    @apply text-xl font-black;
+    @apply text-sm font-thin;
   }
 
   &__date {
@@ -14,7 +14,11 @@
   }
 
   &__location {
-    @apply my-2 font-thin ;
+    @apply my-2 font-thin;
+  }
+
+  &__temperature-wrapper {
+    @apply flex flex-col items-center;
   }
 
   &__temperature {
@@ -22,6 +26,6 @@
   }
 
   &__info {
-    @apply font-thin;
+    @apply font-thin text-sm mx-1;
   }
 }
