@@ -89,8 +89,8 @@ export default function Home() {
             temp={formatTemperature(weatherData.temp)}
             description={weatherData.description}
             alerts={weatherData.alerts}
-            minTemp={weatherData.minTemp}
-            maxTemp={weatherData.maxTemp}
+            minTemp={formatTemperature(weatherData.minTemp)}
+            maxTemp={formatTemperature(weatherData.maxTemp)}
           />
         )}
         <ul className={styles['main__list-wrapper']}>

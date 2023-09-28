@@ -2,13 +2,14 @@
 import Select from 'react-select';
 import { useUserConfigContext } from '../../context/userConfig';
 import { CHANGE_UNIT } from '../../context/userConfig/actions';
+import { UNITS } from '@/app/config/unit';
 import styles from './UnitTypeSelect.module.scss';
 import { useLocalStorage } from '@uidotdev/usehooks';
 
 const UNIT_OPTIONS = [
-  { value: 'standard', label: 'Kelvin (K)' },
-  { value: 'imperial', label: 'Fahrenheit (°F)' },
-  { value: 'metric', label: 'Celsius (°C)' },
+  { value: 'standard', label: `Kelvin (${UNITS.standard})` },
+  { value: 'imperial', label: `Fahrenheit (${UNITS.imperial})` },
+  { value: 'metric', label: `Celsius (${UNITS.metric})` },
 ];
 
 const UnitTypeSelect = () => {

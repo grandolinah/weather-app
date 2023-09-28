@@ -1,1 +1,1 @@
-export const formatTemperature = (temperature) => temperature.toFixed(0);
+export const formatTemperature = (temperature) => Math.round(temperature);

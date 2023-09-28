@@ -6,7 +6,7 @@ const defaultData = {
   temp: '17.48',
   description: 'broken clouds',
   alerts: [],
-  unitType: 'metric', // TODO: unitType
+  unitType: 'metric',
 };
 
 const component = {

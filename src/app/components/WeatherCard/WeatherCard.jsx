@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import styles from './WeatherCard.module.scss';
 import { convertDate } from '../../helpers/convertDate';
+import { getUnit } from '../../helpers/getUnit';
 
 const WeatherCard = ({
   isToday = false,
@@ -16,7 +17,7 @@ const WeatherCard = ({
   alerts = []
 }) => {
   const iconUrl = `${process.env.imageUrl}${icon}.png`;
-  const unit = unitType === 'metric' ? '°C' : ''; // TODO: handle unit types
+  const unit = getUnit(unitType)
   const currentDate = convertDate(date);
   const weatherCardClass = classNames(styles['weather-card'],{ [styles['weather-card--active']]: !isToday });
 
@@ -42,7 +43,6 @@ const WeatherCard = ({
           <p><span className={styles['weather-card__info']}>min:</span>{minTemp}{unit}</p>
           <p><span className={styles['weather-card__info']}>max:</span>{maxTemp}{unit}</p>
       </div>
-
       {!!alerts.length && ( // TODO: handle alerts
         <div>
           Alerts:
@@ -56,9 +56,9 @@ WeatherCard.propTypes = {
   icon: PropTypes.string.isRequired,
   unitType: PropTypes.string.isRequired,
   date: PropTypes.number.isRequired,
-  temp: PropTypes.string,
-  minTemp: PropTypes.string.isRequired,
-  maxTemp: PropTypes.string.isRequired,
+  temp: PropTypes.number,
+  minTemp: PropTypes.number.isRequired,
+  maxTemp: PropTypes.number.isRequired,
   description: PropTypes.string.isRequired,
   alerts: PropTypes.arrayOf(PropTypes.object) // TODO: check type
 };
