@@ -16,7 +16,7 @@ export default function Home() {
     lat: 0,
     lon: 0,
   });
-  const [unitType, setUnitType] = useState('metric'); ''
+  const [unitType, setUnitType] = useState('metric');
   const [weatherData, setWeatherData] = useState(null);
 
   useEffect(() => {
@@ -43,7 +43,7 @@ export default function Home() {
 
     const getWeatherData = async (lat, lon) => {
       try {
-        const response = await getCurrentWeather(location.lat, location.lon, unitType);
+        const response = await getCurrentWeather(lat, lon, unitType);
 
         setWeatherData(response);
       } catch (error) {
@@ -71,4 +71,4 @@ export default function Home() {
       )}
     </main>
   );
-};
+}
