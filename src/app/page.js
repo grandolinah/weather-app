@@ -66,7 +66,12 @@ export default function Home() {
       />
       {weatherData?.current?.weather[0].main && (
         <WeatherCard
-          weatherData={weatherData?.current}
+          icon={weatherData.current.weather[0].icon}
+          unitType={unitType}
+          date={weatherData.current.dt}
+          temp={weatherData.current.temp}
+          description={weatherData.current.weather[0].description}
+          alerts={weatherData.current.alerts}
         />
       )}
     </main>
