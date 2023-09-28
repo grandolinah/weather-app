@@ -2,7 +2,6 @@ import Image from 'next/image';
 import PropTypes from 'prop-types';
 import styles from './WeatherCard.module.scss';
 import { convertDate } from '../../helpers/convertDate';
-import { formatTemperature } from '../../helpers/formatTemperature';
 
 const WeatherCard = ({
   icon,
@@ -29,7 +28,7 @@ const WeatherCard = ({
         height={80}
       />
       <div>
-        <p className={styles['weather-card__temperature']}>{formatTemperature(temp)}{unit}</p>
+        <p className={styles['weather-card__temperature']}>{temp}{unit}</p>
       </div>
       <div className={styles['weather-card__info']}>
         <p>{description}</p>
@@ -47,7 +46,7 @@ WeatherCard.propTypes = {
   icon: PropTypes.string.isRequired,
   unitType: PropTypes.string.isRequired,
   date: PropTypes.number.isRequired,
-  temp: PropTypes.number.isRequired,
+  temp: PropTypes.string.isRequired,
   description: PropTypes.string.isRequired,
   alerts: PropTypes.arrayOf(PropTypes.object) // TODO: check type
 };
