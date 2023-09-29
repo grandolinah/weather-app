@@ -1,10 +1,14 @@
 import axios from 'axios';
 
 const EXCLUDE = 'minutely,hourly';
+const EXCLUDE_FORECAST = 'minutely,current,daily';
 
-export const getCurrentWeather = async (lat, lon, unitType) => {
+const createUrl = (lat, lon, unitType, isDetailPage = false) => `${process.env.apiUrl}?lat=${lat}&lon=${lon}&appid=${process.env.apiKey}&units=${unitType}&exclude=${isDetailPage ? EXCLUDE_FORECAST : EXCLUDE}`;
+
+export const getCurrentWeather = async (lat, lon, unitType, isDetail = false) => {
   try {
-    const response = await axios.get(`${process.env.apiUrl}?lat=${lat}&lon=${lon}&appid=${process.env.apiKey}&units=${unitType}&exclude=${EXCLUDE}`);
+    const url = createUrl(lat, lon, unitType, isDetail);
+    const response = await axios.get(url);
     const { data } = response;
 
     if (!data) return null;

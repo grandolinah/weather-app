@@ -1,0 +1,7 @@
+.layout {
+  @apply min-h-fit;
+
+  &__main {
+    @apply relative min-h-screen z-30 flex justify-center items-center m-4;
+  }
+}

@@ -1,5 +1,5 @@
 import Image from 'next/image';
-import BackgroundImage from '../../assets/background.png';
+import BackgroundImage from '@/app/assets/background.png';
 import styles from './Background.module.scss';
 
 const Background = () => (
@@ -7,7 +7,7 @@ const Background = () => (
     <Image
       src={BackgroundImage}
       alt="background"
-      quality="100"
+      quality="75"
       fill
     />
   </div>
