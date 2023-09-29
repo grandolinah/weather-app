@@ -4,4 +4,8 @@
   &__title {
     @apply text-slate-200 font-thin text-base md:text-2xl;
   }
+
+  &__no-data {
+    @apply text-slate-200 font-thin text-xs;
+  }
 }

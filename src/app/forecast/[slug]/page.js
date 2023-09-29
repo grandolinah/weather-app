@@ -53,17 +53,19 @@ export default function Page({ params }) {
   }, [unit, location, date]);
 
   return isLoaderVisible ? (
-        <CircleLoader
+    <CircleLoader
       color={colors.fuchsia[400]}
       loading
       size={100}
       aria-label="Loading Spinner"
       data-testid="loader"
     />
-    ) : (
+  ) : (
     <div className={styles['detail-page']}>
       {date && <h2 className={styles['detail-page__title']}>Weather forecast for {convertDate(date)} </h2>}
+      {hourlyData.length ? (
       <HourList hourlyData={hourlyData} />
+      ) : <p className={styles['detail-page__no-data']}>There is no data for this day</p> }
     </div>
   );
 }
