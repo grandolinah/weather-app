@@ -2,6 +2,6 @@
   @apply relative z-50 flex flex-row items-center justify-between gap-2 w-full bg-indigo-500 p-4;
 
   &__link {
-    @apply text-base md:text-xl font-thin text-white cursor-pointer;
+    @apply text-base md:text-xl font-thin font-main text-white cursor-pointer no-underline;
   }
 }
