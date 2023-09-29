@@ -5,7 +5,6 @@ import { getUnit } from '@/app/helpers/getUnit';
 import { useUserConfigContext } from '@/app/context/userConfig';
 import styles from './HourCard.module.scss';
 
-
 const HourCard = ({
   time,
   temp,

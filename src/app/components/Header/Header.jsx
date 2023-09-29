@@ -6,17 +6,16 @@ const UnitTypeSelect = dynamic(() => import('../UnitTypeSelect'), {
   ssr: false,
 });
 
-const Header = () => {
-  return (
-    <header className={styles.header}>
-      <Link href="/">
-        <h1 className={styles.header__link}>Weather app</h1>
-      </Link>
-      <div>
-        <UnitTypeSelect />
-      </div>
-    </header>
-  );
-};
+const Header = () => (
+  <header className={styles.header}>
+    <Link href="/">
+      <h1 className={styles.header__link}>Weather app</h1>
+    </Link>
+    <div>
+      <UnitTypeSelect />
+    </div>
+  </header>
+);
+
 
 export default Header;
