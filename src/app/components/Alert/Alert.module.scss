@@ -1,10 +1,10 @@
 .alert {
   &__title {
-    @apply bg-rose-500 bg-opacity-20 text-white font-bold rounded-t px-4 py-2;
+    @apply bg-rose-500 bg-opacity-20 text-white font-bold rounded-t-lg px-4 py-2;
   }
 
   &__wrapper {
-    @apply border border-t-0 border-rose-400 rounded-b bg-rose-100 px-4 py-3 text-rose-700;
+    @apply border border-t-0 border-rose-400 rounded-b-lg bg-rose-100 px-4 py-3 text-rose-700;
   }
 
   &__title {

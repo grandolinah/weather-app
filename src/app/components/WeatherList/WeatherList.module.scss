@@ -2,7 +2,7 @@
   @apply flex flex-col items-center p-4 max-w-[90%];
 
   &__wrapper {
-    @apply flex flex-col items-center justify-center  lg:flex-row gap-2;
+    @apply flex flex-col items-center justify-center  lg:flex-row gap-4;
   }
 
   &__list-wrapper {

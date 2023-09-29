@@ -1,5 +1,7 @@
 'use client'
 import { useEffect, useState } from 'react';
+import CircleLoader from 'react-spinners/CircleLoader';
+import colors from 'tailwindcss/colors';
 import { getCurrentWeather } from '@/app/services/axios';
 import { useUserConfigContext } from '@/app/context/userConfig';
 import { normalizeHourlyData } from '@/app/helpers/normalizeData';
@@ -15,6 +17,7 @@ export default function Page({ params }) {
     lat: '',
     lon: ''
   });
+  const [isLoaderVisible, setIsLoaderVisible] = useState(true);
 
   useEffect(() => {
     const urlData = params.slug.split('-');
@@ -39,6 +42,7 @@ export default function Page({ params }) {
         const data = normalizeHourlyData(response, date);
 
         setHourlyData(data);
+        setIsLoaderVisible(false);
       } catch (error) {
         // TODO: handle error
         console.log(error);
@@ -48,7 +52,15 @@ export default function Page({ params }) {
     getWeatherData(location.lat, location.lon);
   }, [unit, location, date]);
 
-  return (
+  return isLoaderVisible ? (
+        <CircleLoader
+      color={colors.fuchsia[400]}
+      loading
+      size={100}
+      aria-label="Loading Spinner"
+      data-testid="loader"
+    />
+    ) : (
     <div className={styles['detail-page']}>
       {date && <h2 className={styles['detail-page__title']}>Weather forecast for {convertDate(date)} </h2>}
       <HourList hourlyData={hourlyData} />

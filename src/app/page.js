@@ -1,5 +1,7 @@
 'use client'
 import { useState, useEffect } from 'react';
+import CircleLoader from 'react-spinners/CircleLoader';
+import colors from 'tailwindcss/colors';
 import { getCurrentWeather } from './services/axios';
 import WeatherList from './components/WeatherList/WeatherList';
 import { normalizeData } from './helpers/normalizeData';
@@ -20,6 +22,7 @@ export default function Home() {
   const { state: { unit }, dispatch } = useUserConfigContext();
   const [weatherData, setWeatherData] = useState(null);
   const [foreCastData, setForeCastData] = useState([]);
+  const [isLoaderVisible, setIsLoaderVisible] = useState(true);
 
   useEffect(() => {
     const onSuccessGetLocation = (position) => {
@@ -72,6 +75,7 @@ export default function Home() {
 
         setWeatherData(currentWeather);
         setForeCastData(normalizedForecast);
+        setIsLoaderVisible(false);
       } catch (error) {
         // TODO: handle error
         console.log(error);
@@ -81,10 +85,18 @@ export default function Home() {
     getWeatherData(location.lat, location.lon);
   }, [location, unit]);
 
-  return (
-      <WeatherList
-        weatherData={weatherData}
-        foreCastData={foreCastData}
-      />
+  return isLoaderVisible ? (
+    <CircleLoader
+      color={colors.fuchsia[400]}
+      loading
+      size={100}
+      aria-label="Loading Spinner"
+      data-testid="loader"
+    />
+    ) : (
+    <WeatherList
+      weatherData={weatherData}
+      foreCastData={foreCastData}
+    />
   );
 }

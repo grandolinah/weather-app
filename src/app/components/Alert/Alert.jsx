@@ -1,4 +1,5 @@
 import PropTypes from 'prop-types';
+import { convertDate } from '@/app/helpers/convertDate';
 import styles from './Alert.module.scss';
 
 const Alert = ({
@@ -15,7 +16,7 @@ const Alert = ({
       </div>
       <div className={styles.alert__wrapper}>
         <p className={styles.alert__description}>{description}</p>
-        <time className={styles.alert__time}>{start} - {end}</time>
+        <time className={styles.alert__time}>{`announced: ${convertDate(start)} until: ${convertDate(end)}`}</time>
       </div>
     </div>
   );
