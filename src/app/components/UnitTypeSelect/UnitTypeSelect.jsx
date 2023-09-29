@@ -1,7 +1,7 @@
 'use client'
 import Select from 'react-select';
-import { useUserConfigContext } from '../../context/userConfig';
-import { CHANGE_UNIT } from '../../context/userConfig/actions';
+import { useUserConfigContext } from '@/app/context/userConfig';
+import { CHANGE_UNIT } from '@/app/context/userConfig/actions';
 import { UNITS } from '@/app/config/unit';
 import styles from './UnitTypeSelect.module.scss';
 import { useLocalStorage } from '@uidotdev/usehooks';

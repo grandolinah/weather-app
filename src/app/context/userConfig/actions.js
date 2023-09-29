@@ -1,1 +1,2 @@
 export const CHANGE_UNIT = 'CHANGE_UNIT';
+export const CHANGE_LOCATION = 'CHANGE_LOCATION';
