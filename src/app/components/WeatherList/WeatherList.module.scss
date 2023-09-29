@@ -1,5 +1,5 @@
 .weather-list {
-  @apply flex flex-col items-center p-4 max-w-[90%];
+  @apply flex flex-col items-center p-4 max-w-[974px];
 
   &__wrapper {
     @apply flex flex-col items-center justify-center  lg:flex-row gap-4;
