@@ -1,0 +1,28 @@
+// TODO: add styles
+.hour-card {
+  @apply my-10 mx-2 ml-4;
+
+  &__border {
+    @apply absolute w-3 h-3 bg-indigo-600 rounded-full mt-1.5 -left-1.5 border border-white;
+  }
+
+  &__wrapper {
+    @apply flex flex-col md:flex-row items-center justify-start gap-3;
+  }
+
+  &__time {
+    @apply text-indigo-700 font-light;
+  }
+
+  &__temp {
+    @apply text-indigo-700 font-bold;
+  }
+
+  &__description {
+    @apply text-sm font-medium text-slate-700;
+  }
+
+  &__info {
+    @apply text-xs mx-2 font-light;
+  }
+}

@@ -1,12 +1,10 @@
 'use client'
 import { useState, useEffect } from 'react';
 import { getCurrentWeather } from './services/axios';
-import WeatherCard from './components/WeatherCard/WeatherCard';
-import UnitTypeSelect from './components/UnitTypeSelect';
-import { formatTemperature } from './helpers/formatTemperature';
+import WeatherList from './components/WeatherList/WeatherList';
 import { normalizeData } from './helpers/normalizeData';
-import styles from './page.module.scss';
 import { useUserConfigContext } from './context/userConfig';
+import { CHANGE_LOCATION } from './context/userConfig/actions';
 
 const OPTIONS = {
   enableHighAccuracy: true,
@@ -19,7 +17,7 @@ export default function Home() {
     lat: 0,
     lon: 0,
   });
-  const { state: { unit } } = useUserConfigContext();
+  const { state: { unit }, dispatch } = useUserConfigContext();
   const [weatherData, setWeatherData] = useState(null);
   const [foreCastData, setForeCastData] = useState([]);
 
@@ -31,16 +29,24 @@ export default function Home() {
         lat: latitude,
         lon: longitude
       });
+
+      dispatch({
+        type: CHANGE_LOCATION, payload: {
+          lat: latitude,
+          lon: longitude
+        }
+      });
     };
 
     const onErrorGetLocation = (error) => {
       // TODO: handle error
+      console.log(error);
     }
 
     if (navigator.geolocation) {
       navigator.geolocation.getCurrentPosition(onSuccessGetLocation, onErrorGetLocation, OPTIONS);
     }
-  }, []);
+  }, [dispatch]);
 
   useEffect(() => {
     if (!location.lat) return;
@@ -68,6 +74,7 @@ export default function Home() {
         setForeCastData(normalizedForecast);
       } catch (error) {
         // TODO: handle error
+        console.log(error);
       }
     };
 
@@ -75,48 +82,9 @@ export default function Home() {
   }, [location, unit]);
 
   return (
-    <main className={styles.main}>
-      <div className={styles['main__unit-wrapper']}>
-        <UnitTypeSelect />
-      </div>
-      <div className={styles.main__wrapper}>
-        {weatherData && (
-          <WeatherCard
-            isToday
-            icon={weatherData.icon}
-            unitType={unit}
-            date={weatherData.date}
-            temp={formatTemperature(weatherData.temp)}
-            description={weatherData.description}
-            alerts={weatherData.alerts}
-            minTemp={formatTemperature(weatherData.minTemp)}
-            maxTemp={formatTemperature(weatherData.maxTemp)}
-          />
-        )}
-        <ul className={styles['main__list-wrapper']}>
-          {foreCastData.map((item, index) => {
-            const onClickHandler = () => {
-              // TODO: redirect
-            };
-
-            return (
-              <li key={index} className={styles['main__list-item']}>
-                <WeatherCard
-                  icon={item.icon}
-                  unitType={unit}
-                  date={item.date}
-                  temp={item.temp}
-                  description={item.description}
-                  alerts={item.alerts}
-                  minTemp={item.minTemp}
-                  maxTemp={item.maxTemp}
-                  onClick={onClickHandler}
-                />
-              </li>
-            )
-          })}
-        </ul>
-      </div>
-    </main>
+      <WeatherList
+        weatherData={weatherData}
+        foreCastData={foreCastData}
+      />
   );
 }

@@ -1,7 +1,11 @@
 import { Roboto } from 'next/font/google';
+import classNames from 'classnames';
 import { UserConfigProvider } from './context/userConfig';
+import Header from './components/Header';
+import Footer from './components/Footer';
 import Background from './components/Background';
 import './globals.scss';
+import styles from './layout.module.scss';
 
 const roboto = Roboto({
   subsets: ['latin'],
@@ -14,12 +18,18 @@ export const metadata = {
 };
 
 export default function RootLayout({ children }) {
+  const layoutClasses = classNames(roboto.className, styles.layout);
+
   return (
     <html lang="en">
-      <body className={roboto.className}>
-        <Background />
+      <body className={layoutClasses}>
         <UserConfigProvider>
+          <Header />
+          <main className={styles.layout__main}>
           {children}
+          </main>
+          <Footer />
+          <Background />
         </UserConfigProvider>
       </body>
     </html>

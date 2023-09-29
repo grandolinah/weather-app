@@ -1,0 +1,7 @@
+.detail-page {
+  @apply w-full flex flex-col gap-3 items-center justify-center;
+
+  &__title {
+    @apply text-slate-200 font-thin text-base md:text-2xl;
+  }
+}
