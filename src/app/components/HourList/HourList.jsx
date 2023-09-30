@@ -1,5 +1,5 @@
-import PropTypes, { hourCardTypes } from 'prop-types';
-import HourCard from '@/app/components/HourCard/HourCard';
+import PropTypes from 'prop-types';
+import HourCard, { hourCardTypes} from '@/app/components/HourCard/HourCard';
 
 import styles from './HourList.module.scss';
 

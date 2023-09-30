@@ -5,7 +5,6 @@ const defaultData = {
   date: '1695848656',
   temp: '17.48',
   description: 'broken clouds',
-  alerts: [],
   unitType: 'metric',
 };
 

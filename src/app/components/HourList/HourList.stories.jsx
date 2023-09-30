@@ -20,13 +20,13 @@ const defaultData = [
 ];
 
 const component = {
-  component: HourList,
+  component: HourList
 };
 
 export const Primary = {
   args: {
-    ...defaultData
-  },
+    hourlyData: defaultData,
+  }
 };
 
 export default component;
