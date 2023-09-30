@@ -1,15 +1,16 @@
-import WeatherCard from './WeatherCard';
+import HourCard from './HourCard';
 
 const defaultData = {
-  icon: '04n',
-  date: '1695848656',
-  temp: '17.48',
+  time: 1684952747,
+  temp: 24,
+  feelsLike: 25,
   description: 'broken clouds',
-  unitType: 'metric',
+  uvi: 1,
+  icon: '04n',
 };
 
 const component = {
-  component: WeatherCard,
+  component: HourCard,
 };
 
 export const Primary = {

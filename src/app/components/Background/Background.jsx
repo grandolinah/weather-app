@@ -3,7 +3,7 @@ import BackgroundImage from '@/app/assets/background.png';
 import styles from './Background.module.scss';
 
 const Background = () => (
-  <div className={styles.background}>
+  <div className={styles.background} data-testid="background">
     <Image
       src={BackgroundImage}
       alt="background"
