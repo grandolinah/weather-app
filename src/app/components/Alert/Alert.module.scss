@@ -1,0 +1,21 @@
+.alert {
+  &__title {
+    @apply font-main bg-rose-500 bg-opacity-20 text-white font-bold rounded-t-lg px-4 py-2;
+  }
+
+  &__wrapper {
+    @apply border border-t-0 border-rose-400 rounded-b-lg bg-rose-100 px-4 py-3 text-rose-700;
+  }
+
+  &__title {
+    @apply font-main font-medium text-white my-2;
+  }
+
+  &__description {
+    @apply font-main text-white text-base font-thin my-2;
+  }
+
+  &__time {
+    @apply font-main text-white text-xs font-thin my-2;
+  }
+}

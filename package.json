@@ -1,0 +1,44 @@
+{
+  "name": "weather-app",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint",
+    "storybook": "storybook dev -p 6006",
+    "build-storybook": "storybook build"
+  },
+  "dependencies": {
+    "@uidotdev/usehooks": "^2.3.1",
+    "axios": "^1.5.1",
+    "classnames": "^2.3.2",
+    "next": "^13.5.3",
+    "prop-types": "^15.8.1",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-select": "^5.7.5",
+    "react-spinners": "^0.13.8"
+  },
+  "devDependencies": {
+    "@storybook/addon-essentials": "^7.4.5",
+    "@storybook/addon-interactions": "^7.4.5",
+    "@storybook/addon-links": "^7.4.5",
+    "@storybook/addon-onboarding": "^1.0.8",
+    "@storybook/blocks": "^7.4.5",
+    "@storybook/nextjs": "^7.4.5",
+    "@storybook/react": "^7.4.5",
+    "@storybook/testing-library": "^0.2.1",
+    "autoprefixer": "^10.4.16",
+    "eslint": "^8.50.0",
+    "eslint-config-next": "^13.5.3",
+    "eslint-plugin-react": "^7.33.2",
+    "eslint-plugin-react-hooks": "^4.6.0",
+    "eslint-plugin-storybook": "^0.6.14",
+    "postcss": "^8.4.30",
+    "sass": "^1.67.0",
+    "storybook": "^7.4.5",
+    "tailwindcss": "^3.3.3"
+  }
+}
