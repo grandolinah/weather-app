@@ -87,7 +87,7 @@ export default function Home() {
 
   return isLoaderVisible ? (
     <CircleLoader
-      color={colors.fuchsia[400]}
+      color={colors.white}
       loading
       size={100}
       aria-label="Loading Spinner"
